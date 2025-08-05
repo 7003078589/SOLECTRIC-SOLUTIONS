@@ -497,16 +497,17 @@ body {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
+    margin-top: 50px;
 }
 
 .service-card {
     background: white;
     padding: 40px 30px;
-    border-radius: 20px;
-    text-align: center;
+    border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -519,7 +520,7 @@ body {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, #0f9d58, #00c853);
+    background: linear-gradient(90deg, #28a745, #20c997);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -536,46 +537,197 @@ body {
 .service-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #0f9d58, #00c853);
+    background: linear-gradient(135deg, #28a745, #20c997);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.service-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid #28a745;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-card:hover .service-icon::before {
+    opacity: 1;
+    animation: pulse 2s infinite;
+}
+
+.service-icon i {
     font-size: 2rem;
     color: white;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon i {
+    transform: scale(1.2);
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
     color: #333;
+    font-size: 1.4rem;
     margin-bottom: 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover h3 {
+    color: #28a745;
 }
 
 .service-card p {
     color: #666;
-    margin-bottom: 25px;
     line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 .service-features {
-    list-style: none;
     text-align: left;
 }
 
-.service-features li {
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
     padding: 8px 0;
-    color: #555;
-    position: relative;
-    padding-left: 25px;
+    transition: all 0.3s ease;
 }
 
-.service-features li::before {
-    content: '✓';
+.feature-item:hover {
+    transform: translateX(5px);
+}
+
+.feature-item i {
+    color: #28a745;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover i {
+    transform: scale(1.2);
+}
+
+.feature-item span {
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.feature-item:hover span {
+    color: #28a745;
+}
+
+.satisfaction-badge-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.satisfaction-badge {
+    position: relative;
+    margin-left: 30px;
+}
+
+.badge-circle {
+    width: 120px;
+    height: 120px;
+    background: #FFD700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    border: 3px solid #FFA500;
+}
+
+.badge-circle::before {
+    content: '';
     position: absolute;
-    left: 0;
-    color: #0f9d58;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid #FFD700;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #FFD700, #FFA500, #FFD700);
+    z-index: -1;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.badge-content {
+    text-align: center;
+    color: #000;
+}
+
+.badge-percentage {
+    display: block;
+    font-size: 1.8rem;
     font-weight: bold;
+    line-height: 1;
+}
+
+.badge-text {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.badge-guarantee {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.badge-ribbons {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ribbon {
+    position: absolute;
+    width: 8px;
+    height: 20px;
+    background: #FF0000;
+    border-radius: 2px;
+}
+
+.ribbon-left {
+    left: -10px;
+    transform: rotate(-15deg);
+}
+
+.ribbon-right {
+    right: -10px;
+    transform: rotate(15deg);
 }
 
 /* Why Choose Us Section */
@@ -657,8 +809,9 @@ body {
 
 .power-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
 }
 
 .power-card {
@@ -1279,8 +1432,47 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .services-grid {
+        .services-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .service-card {
+        padding: 30px 20px;
+    }
+
+    .service-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .service-icon i {
+        font-size: 1.8rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .satisfaction-badge-container {
+        margin-top: 40px;
+    }
+    
+    .badge-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .badge-percentage {
+        font-size: 1.5rem;
+    }
+    
+    .badge-text {
+        font-size: 0.6rem;
+    }
+    
+    .badge-guarantee {
+        font-size: 0.8rem;
     }
 
     .reasons-grid {
@@ -1289,6 +1481,15 @@ body {
 
     .power-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .power-card {
+        padding: 25px 20px;
+    }
+    
+    .power-header h3 {
+        font-size: 1.3rem;
     }
 
     .brands-grid {
