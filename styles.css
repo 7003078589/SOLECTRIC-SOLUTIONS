@@ -137,6 +137,7 @@ body {
     position: relative;
     background: linear-gradient(135deg, #0f9d58 0%, #00c853 50%, #64dd17 100%);
     overflow: hidden;
+    padding-top: 70px; /* Add padding to account for fixed navbar */
 }
 
 .hero-background {
@@ -150,6 +151,7 @@ body {
     background-position: center;
     background-attachment: fixed;
     animation: float 20s ease-in-out infinite;
+    z-index: 1; /* Ensure background is behind content but visible */
 }
 
 .hero-overlay {
@@ -163,7 +165,7 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3; /* Ensure content is above background */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
@@ -1562,6 +1564,13 @@ body {
 
     .hero-background {
         background-attachment: scroll !important;
+        background-position: center center !important;
+        background-size: cover !important;
+    }
+    
+    .hero {
+        padding-top: 70px; /* Ensure padding for fixed navbar on mobile */
+        min-height: calc(100vh - 70px); /* Adjust height to account for navbar */
     }
 }
 
