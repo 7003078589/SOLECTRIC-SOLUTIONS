@@ -296,13 +296,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Loading Animation for Images
     const images = document.querySelectorAll('img');
     images.forEach(img => {
-        img.addEventListener('load', function() {
-            this.style.opacity = '1';
-            this.style.transform = 'scale(1)';
-        });
+        // Set initial state
         img.style.opacity = '0';
         img.style.transform = 'scale(0.95)';
         img.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        // Check if image is already loaded
+        if (img.complete && img.naturalHeight !== 0) {
+            img.style.opacity = '1';
+            img.style.transform = 'scale(1)';
+        } else {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+                this.style.transform = 'scale(1)';
+            });
+            img.addEventListener('error', function() {
+                console.error('Failed to load image:', this.src);
+                this.style.opacity = '1';
+                this.style.transform = 'scale(1)';
+            });
+        }
     });
 
     // Parallax Effect for Hero Section
