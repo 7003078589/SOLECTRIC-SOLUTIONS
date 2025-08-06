@@ -2,7 +2,7 @@
 (function() {
     // Initialize EmailJS with your public key
     // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-    emailjs.init('YOUR_PUBLIC_KEY');
+    emailjs.init('sucGvi6iQ4QhmQQdy');
 })();
 
 // DOM Content Loaded
@@ -195,8 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // EmailJS configuration
             // Replace these with your actual EmailJS service and template IDs
-            const serviceId = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-            const templateId = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
+            const serviceId = 'service_vkqkgbo'; // Replace with your EmailJS service ID
+            const templateId = 'template_j854a45'; // Replace with your EmailJS template ID
             
             // Prepare template parameters
             const templateParams = {
@@ -219,6 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Show success notification
                     showNotification('Message sent successfully!', 'success');
+                    // Fallback alert for visibility
+                    alert('Your message has been sent successfully!');
                 }, function(error) {
                     console.log('FAILED...', error);
                     formStatus.textContent = 'Failed to send message. Please try again or contact us directly.';
@@ -226,6 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Show error notification
                     showNotification('Failed to send message. Please try again.', 'error');
+                    // Fallback alert for visibility
+                    alert('Failed to send message. Please try again or contact us directly.');
                 });
         });
     }
@@ -318,7 +322,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Testimonial Auto-scroll (Optional)
     let testimonialIndex = 0;
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
     
     function autoScrollTestimonials() {
         testimonialCards.forEach((card, index) => {
