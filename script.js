@@ -293,8 +293,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Loading Animation for Images
-    const images = document.querySelectorAll('img');
+    // Ensure logo images are always visible
+    const logoImages = document.querySelectorAll('.logo-img, .footer-logo img');
+    logoImages.forEach(img => {
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+        img.style.transition = 'none';
+    });
+
+    // Loading Animation for Images (excluding logos)
+    const images = document.querySelectorAll('img:not(.logo-img):not(.footer-logo img)');
     images.forEach(img => {
         // Set initial state
         img.style.opacity = '0';

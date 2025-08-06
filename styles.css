@@ -74,6 +74,9 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     color: #0f9d58;
+    display: block;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .nav-menu {
@@ -959,6 +962,18 @@ body {
     filter: grayscale(0%);
 }
 
+.brand-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.brand-item:hover .brand-text {
+    color: #0f9d58;
+}
+
 /* Projects Section */
 .projects {
     padding: 100px 0;
@@ -1274,6 +1289,10 @@ body {
 .footer-logo span {
     font-size: 1.3rem;
     font-weight: 700;
+    color: white;
+    display: block;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .footer-section h4 {
