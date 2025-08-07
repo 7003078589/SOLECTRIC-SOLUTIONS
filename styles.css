@@ -26,6 +26,11 @@ body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    background: #f5f7fa;
+}
+
+section, .brands, .projects, .about, .services, .why-choose-section, .power-generation, .testimonials, .contact, .footer {
+    background: #f5f7fa;
 }
 
 .container {
@@ -135,7 +140,7 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, #0f9d58 0%, #00c853 50%, #64dd17 100%);
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
     overflow: hidden;
     padding-top: 70px; /* Add padding to account for fixed navbar */
 }
