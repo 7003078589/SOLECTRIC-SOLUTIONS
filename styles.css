@@ -26,11 +26,7 @@ body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
-    background: #f5f7fa;
-}
-
-section, .brands, .projects, .about, .services, .why-choose-section, .power-generation, .testimonials, .contact, .footer {
-    background: #f5f7fa;
+    background: #f8f9fa;
 }
 
 .container {
@@ -140,7 +136,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
     overflow: hidden;
     padding-top: 70px; /* Add padding to account for fixed navbar */
 }
@@ -338,7 +334,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Stats Section */
 .stats {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
 }
 
 .stats-grid {
@@ -433,7 +429,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* About Section */
 .about {
     padding: 100px 0;
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 }
 
 .about-content {
@@ -526,7 +522,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Services Section */
 .services {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
 }
 
 .services-grid {
@@ -767,7 +763,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Why Choose Us Section */
 .why-choose-section {
     padding: 100px 0;
-    background: white;
+    background: linear-gradient(135deg, #fffef0 0%, #fff8dc 100%);
 }
 
 .why-choose-content {
@@ -838,7 +834,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Power Generation Section */
 .power-generation {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f0fff0 0%, #e8f5e8 100%);
 }
 
 .power-grid {
@@ -935,7 +931,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Brands Section */
 .brands {
     padding: 80px 0;
-    background: white;
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
 }
 
 .brands-grid {
@@ -947,29 +943,34 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 
 .brand-item {
     background: white;
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 2px solid transparent;
 }
 
 .brand-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: #0f9d58;
 }
 
 .brand-item img {
     max-width: 100%;
     height: auto;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
+    filter: grayscale(80%) brightness(0.7);
+    transition: all 0.3s ease;
+    opacity: 0.7;
 }
 
 .brand-item:hover img {
-    filter: grayscale(0%);
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .brand-text {
@@ -987,7 +988,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Projects Section */
 .projects {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .projects-grid {
@@ -1073,7 +1074,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Testimonials Section */
 .testimonials {
     padding: 100px 0;
-    background: white;
+    background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);
 }
 
 .testimonials-grid {
@@ -1114,11 +1115,17 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
     gap: 15px;
 }
 
-.author-img {
+.author-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    object-fit: cover;
+    background: linear-gradient(135deg, #0f9d58, #00c853);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(15, 157, 88, 0.3);
 }
 
 .author-info h4 {
@@ -1134,7 +1141,7 @@ section, .brands, .projects, .about, .services, .why-choose-section, .power-gene
 /* Contact Section */
 .contact {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
 }
 
 .contact-content {

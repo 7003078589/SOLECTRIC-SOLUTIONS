@@ -219,8 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Show success notification
                     showNotification('Message sent successfully!', 'success');
-                    // Fallback alert for visibility
-                    alert('Your message has been sent successfully!');
                 }, function(error) {
                     console.log('FAILED...', error);
                     formStatus.textContent = 'Failed to send message. Please try again or contact us directly.';
@@ -228,8 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Show error notification
                     showNotification('Failed to send message. Please try again.', 'error');
-                    // Fallback alert for visibility
-                    alert('Failed to send message. Please try again or contact us directly.');
                 });
         });
     }
