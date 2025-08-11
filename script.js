@@ -253,16 +253,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Brand Items Hover Effects
+    // Brand Items - No hover effects (static display)
     const brandItems = document.querySelectorAll('.brand-item');
     brandItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.05)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
+        // Remove any existing hover effects
+        item.style.transform = 'none';
+        item.style.transition = 'none';
     });
 
     // Social Links Hover Effects
