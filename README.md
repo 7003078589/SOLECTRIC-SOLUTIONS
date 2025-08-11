@@ -139,7 +139,7 @@ const templateId = 'YOUR_TEMPLATE_ID';
 ## Support
 
 For technical support or customization requests, contact:
-- Email: rsingh70090@gmail.com
+- Email: solectricbengaluru@gmail.com
 - Phone: +91 95389 21012
 
 ## License

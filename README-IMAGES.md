@@ -177,7 +177,7 @@ If you need assistance with:
 - Updating HTML references
 - Troubleshooting image loading issues
 
-Contact: rsingh70090@gmail.com or +91 95389 21012
+Contact: solectricbengaluru@gmail.com or +91 95389 21012
 
 ---
 

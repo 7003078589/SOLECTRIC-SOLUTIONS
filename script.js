@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Prepare template parameters
             const templateParams = {
-                to_email: 'rsingh70090@gmail.com',
+                to_email: 'solectricbengaluru@gmail.com',
                 from_name: name,
                 from_email: email,
                 from_phone: phone,
