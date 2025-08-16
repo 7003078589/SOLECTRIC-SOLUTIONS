@@ -173,61 +173,137 @@ document.addEventListener('DOMContentLoaded', function() {
         card.classList.add('fade-in-up');
     });
 
-    // Contact Form Handling
+    // Enhanced Contact Form Handling with Validation
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
 
     if (contactForm) {
+        // Form validation function
+        function validateForm(formData) {
+            const errors = [];
+            
+            const name = formData.get('user_name').trim();
+            const email = formData.get('user_email').trim();
+            const phone = formData.get('user_phone').trim();
+            const serviceType = formData.get('service_type');
+            const message = formData.get('message').trim();
+            
+            if (!name || name.length < 2) {
+                errors.push('Please enter a valid name (minimum 2 characters)');
+            }
+            
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errors.push('Please enter a valid email address');
+            }
+            
+            if (!phone || phone.length < 10) {
+                errors.push('Please enter a valid phone number (minimum 10 digits)');
+            }
+            
+            if (!serviceType) {
+                errors.push('Please select a service type');
+            }
+            
+            if (!message || message.length < 10) {
+                errors.push('Please enter a message (minimum 10 characters)');
+            }
+            
+            return errors;
+        }
+
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Validate form
+            const errors = validateForm(formData);
+            
+            if (errors.length > 0) {
+                formStatus.innerHTML = errors.map(error => `<div style="color: #d32f2f; margin: 5px 0;">• ${error}</div>`).join('');
+                formStatus.style.color = '#d32f2f';
+                return;
+            }
             
             // Show sending status
             formStatus.textContent = 'Sending message...';
             formStatus.style.color = '#0f9d58';
             
             // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('user_name');
-            const email = formData.get('user_email');
-            const phone = formData.get('user_phone');
+            const name = formData.get('user_name').trim();
+            const email = formData.get('user_email').trim();
+            const phone = formData.get('user_phone').trim();
             const serviceType = formData.get('service_type');
-            const message = formData.get('message');
+            const message = formData.get('message').trim();
             
             // EmailJS configuration
-            // Replace these with your actual EmailJS service and template IDs
-            const serviceId = 'service_vkqkgbo'; // Replace with your EmailJS service ID
-            const templateId = 'template_j854a45'; // Replace with your EmailJS template ID
+            const serviceId = 'service_vkqkgbo'; // Your EmailJS service ID
+            const templateId = 'template_j854a45'; // Your EmailJS template ID
             
             // Prepare template parameters
             const templateParams = {
                 to_email: 'solectricbengaluru@gmail.com',
+                to_name: 'Solectric Solutions Team',
                 from_name: name,
                 from_email: email,
                 from_phone: phone,
                 service_type: serviceType,
                 message: message,
-                reply_to: email
+                reply_to: email,
+                subject: `New Solar Inquiry from ${name}`,
+                date: new Date().toLocaleDateString('en-IN'),
+                time: new Date().toLocaleTimeString('en-IN'),
+                company_email: 'solectricbengaluru@gmail.com',
+                company_phone: '+91 95389 21012'
             };
+            
+            // Debug: Log the parameters being sent
+            console.log('Sending email with parameters:', templateParams);
             
             // Send email using EmailJS
             emailjs.send(serviceId, templateId, templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
-                    formStatus.textContent = 'Message sent successfully! We will get back to you soon.';
+                    formStatus.textContent = 'Message sent successfully! We will get back to you within 24 hours.';
                     formStatus.style.color = '#0f9d58';
                     contactForm.reset();
                     
                     // Show success notification
-                    showNotification('Message sent successfully!', 'success');
+                    showNotification('Message sent successfully! We will contact you soon.', 'success');
+                    
+                    // Send confirmation email to customer (optional)
+                    sendCustomerConfirmation(name, email, serviceType);
                 }, function(error) {
                     console.log('FAILED...', error);
-                    formStatus.textContent = 'Failed to send message. Please try again or contact us directly.';
+                    formStatus.textContent = 'Failed to send message. Please try again or contact us directly at +91 95389 21012';
                     formStatus.style.color = '#d32f2f';
                     
                     // Show error notification
-                    showNotification('Failed to send message. Please try again.', 'error');
+                    showNotification('Failed to send message. Please try again or call us directly.', 'error');
                 });
         });
+    }
+
+    // Function to send confirmation email to customer
+    function sendCustomerConfirmation(name, email, serviceType) {
+        const confirmationTemplateId = 'template_customer_confirmation'; // You'll need to create this template
+        const confirmationParams = {
+            to_email: email,
+            customer_name: name,
+            service_type: serviceType,
+            company_name: 'Solectric Solutions',
+            phone: '+91 95389 21012',
+            email: 'solectricbengaluru@gmail.com'
+        };
+        
+        // Uncomment the following lines if you want to send confirmation emails to customers
+        // emailjs.send('service_vkqkgbo', confirmationTemplateId, confirmationParams)
+        //     .then(function(response) {
+        //         console.log('Confirmation email sent successfully!', response.status, response.text);
+        //     }, function(error) {
+        //         console.log('Failed to send confirmation email...', error);
+        //     });
     }
 
     // Form Input Animations
