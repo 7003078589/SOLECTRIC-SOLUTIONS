@@ -1,9 +1,5 @@
-// Initialize EmailJS
-(function() {
-    // Initialize EmailJS with your public key
-    // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-    emailjs.init('sucGvi6iQ4QhmQQdy');
-})();
+// PHP Backend Email System for Solectric Solutions
+// No EmailJS initialization needed - using server-side PHP for email handling
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -173,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.classList.add('fade-in-up');
     });
 
-    // Enhanced Contact Form Handling with Validation
+    // Enhanced Contact Form Handling with PHP Backend
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
 
@@ -237,74 +233,55 @@ document.addEventListener('DOMContentLoaded', function() {
             const serviceType = formData.get('service_type');
             const message = formData.get('message').trim();
             
-            // EmailJS configuration
-            const serviceId = 'service_vkqkgbo'; // Your EmailJS service ID
-            const templateId = 'template_j854a45'; // Your EmailJS template ID
-            
-            // Prepare template parameters
-            const templateParams = {
-                to_email: 'solectricbengaluru@gmail.com',
-                to_name: 'Solectric Solutions Team',
-                from_name: name,
-                from_email: email,
-                from_phone: phone,
+            // Prepare data for PHP backend
+            const formDataObj = {
+                user_name: name,
+                user_email: email,
+                user_phone: phone,
                 service_type: serviceType,
-                message: message,
-                reply_to: email,
-                subject: `New Solar Inquiry from ${name}`,
-                date: new Date().toLocaleDateString('en-IN'),
-                time: new Date().toLocaleTimeString('en-IN'),
-                company_email: 'solectricbengaluru@gmail.com',
-                company_phone: '+91 95389 21012'
+                message: message
             };
             
-            // Debug: Log the parameters being sent
-            console.log('Sending email with parameters:', templateParams);
-            
-            // Send email using EmailJS
-            emailjs.send(serviceId, templateId, templateParams)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    formStatus.textContent = 'Message sent successfully! We will get back to you within 24 hours.';
+            // Send data to PHP backend
+            fetch('contact-handler.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formDataObj)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response:', data);
+                
+                if (data.success) {
+                    formStatus.textContent = data.message;
                     formStatus.style.color = '#0f9d58';
                     contactForm.reset();
                     
                     // Show success notification
                     showNotification('Message sent successfully! We will contact you soon.', 'success');
-                    
-                    // Send confirmation email to customer (optional)
-                    sendCustomerConfirmation(name, email, serviceType);
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    formStatus.textContent = 'Failed to send message. Please try again or contact us directly at +91 95389 21012';
+                } else {
+                    formStatus.textContent = data.message;
                     formStatus.style.color = '#d32f2f';
                     
                     // Show error notification
-                    showNotification('Failed to send message. Please try again or call us directly.', 'error');
-                });
+                    showNotification(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                formStatus.textContent = 'Failed to send message. Please try again or contact us directly at +91 95389 21012';
+                formStatus.style.color = '#d32f2f';
+                
+                // Show error notification
+                showNotification('Failed to send message. Please try again or call us directly.', 'error');
+            });
         });
     }
 
-    // Function to send confirmation email to customer
-    function sendCustomerConfirmation(name, email, serviceType) {
-        const confirmationTemplateId = 'template_customer_confirmation'; // You'll need to create this template
-        const confirmationParams = {
-            to_email: email,
-            customer_name: name,
-            service_type: serviceType,
-            company_name: 'Solectric Solutions',
-            phone: '+91 95389 21012',
-            email: 'solectricbengaluru@gmail.com'
-        };
-        
-        // Uncomment the following lines if you want to send confirmation emails to customers
-        // emailjs.send('service_vkqkgbo', confirmationTemplateId, confirmationParams)
-        //     .then(function(response) {
-        //         console.log('Confirmation email sent successfully!', response.status, response.text);
-        //     }, function(error) {
-        //         console.log('Failed to send confirmation email...', error);
-        //     });
-    }
+    // Customer confirmation emails are now handled by the PHP backend
+    // No additional JavaScript function needed
 
     // Form Input Animations
     const formInputs = document.querySelectorAll('.form-group input, .form-group textarea, .form-group select');
