@@ -28,7 +28,7 @@ date_default_timezone_set('Asia/Kolkata');
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="Images/Logo/logo.jpeg" alt="Solectric Solutions" class="logo-img">
+                <img src="Images/Logo/logo1.PNG" alt="Solectric Solutions" class="logo-img">
                 <span class="logo-text">Solectric Solutions</span>
             </div>
             <ul class="nav-menu">
@@ -940,7 +940,7 @@ date_default_timezone_set('Asia/Kolkata');
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="Images/Logo/logo.jpeg" alt="Solectric Solutions">
+                        <img src="Images/Logo/logo1.PNG" alt="Solectric Solutions">
                         <span>Solectric Solutions</span>
                     </div>
                     <p>Leading solar energy solutions provider in Bengaluru, committed to sustainable energy and customer satisfaction.</p>
