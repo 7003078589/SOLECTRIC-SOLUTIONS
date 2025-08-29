@@ -69,7 +69,7 @@ if (strlen($message) < 10) {
 }
 
 // Email configuration
-$to_email = 'rsingh70090@gmail.com'; // Testing email - change back to solectricbengaluru@gmail.com after testing
+$to_email = 'solectricbengaluru@gmail.com'; // Client email where you receive inquiries
 $from_email = 'info@solectricsolutions.in';
 $from_name = 'Solectric Solutions Website';
 $subject = "New Solar Inquiry from $name";
