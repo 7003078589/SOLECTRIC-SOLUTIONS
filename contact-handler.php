@@ -87,7 +87,7 @@ $hostinger_config = [
     'smtp_host' => 'smtp.hostinger.com',  // Hostinger SMTP server
     'smtp_port' => 587,                   // TLS port
     'smtp_username' => 'info@solectricsolutions.in', // Your Hostinger email
-    'smtp_password' => 'YOUR_HOSTINGER_EMAIL_PASSWORD', // Replace with your actual password
+    'smtp_password' => 'Solectrics@1', // Your Hostinger email password
     'smtp_secure' => 'tls'                // Use TLS encryption
 ];
 
