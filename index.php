@@ -16,9 +16,12 @@ date_default_timezone_set('Asia/Kolkata');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Solectric Solutions | Leading Solar Panel Installation Services in Bengaluru</title>
     <meta name="description" content="Solectric Solutions - Premium Solar Panel Installation, Maintenance, and Consultation in Bengaluru. Transform your energy with sustainable solar solutions.">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- PHP Backend Email System - No EmailJS needed -->
