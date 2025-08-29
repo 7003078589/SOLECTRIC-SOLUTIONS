@@ -64,9 +64,9 @@ body {
 }
 
 .logo-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
     display: block;
     object-fit: cover;
     opacity: 1 !important;
@@ -74,7 +74,7 @@ body {
 }
 
 .logo-text {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: #0f9d58;
     display: block;
@@ -1302,9 +1302,9 @@ body {
 }
 
 .footer-logo img {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
     display: block;
     object-fit: cover;
     opacity: 1 !important;
@@ -1312,7 +1312,7 @@ body {
 }
 
 .footer-logo span {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: white;
     display: block;
