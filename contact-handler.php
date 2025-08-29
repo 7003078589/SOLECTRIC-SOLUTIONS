@@ -1,6 +1,6 @@
 <?php
 // Contact Form Handler for Solectric Solutions
-// This file handles contact form submissions and sends emails
+// Updated for Hostinger Email Configuration
 
 // Enable error reporting for debugging (remove in production)
 error_reporting(E_ALL);
@@ -81,10 +81,20 @@ if (strlen($message) < 10) {
     exit;
 }
 
-// Configuration
-$to_email = 'solectricbengaluru@gmail.com';
+// Hostinger Email Configuration
+// Replace these with your actual Hostinger email credentials
+$hostinger_config = [
+    'smtp_host' => 'smtp.hostinger.com',  // Hostinger SMTP server
+    'smtp_port' => 587,                   // TLS port
+    'smtp_username' => 'info@solectricsolutions.in', // Your Hostinger email
+    'smtp_password' => 'YOUR_HOSTINGER_EMAIL_PASSWORD', // Replace with your actual password
+    'smtp_secure' => 'tls'                // Use TLS encryption
+];
+
+// Email Configuration
+$to_email = 'solectricbengaluru@gmail.com'; // Your client email where you receive inquiries
 $to_name = 'Solectric Solutions Team';
-$from_email = 'noreply@solectricsolutions.in'; // Use your domain email
+$from_email = 'info@solectricsolutions.in'; // Your Hostinger email (for sending)
 $from_name = 'Solectric Solutions Website';
 $subject = "New Solar Inquiry from $name";
 
@@ -173,23 +183,74 @@ $html_content = "
 </html>
 ";
 
-// Set up email headers
-$headers = array();
-$headers[] = "MIME-Version: 1.0";
-$headers[] = "Content-Type: text/html; charset=UTF-8";
-$headers[] = "From: $from_name <$from_email>";
-$headers[] = "Reply-To: $name <$email>";
-$headers[] = "X-Mailer: PHP/" . phpversion();
+// Function to send email using Hostinger SMTP
+function sendEmailWithHostinger($to_email, $subject, $html_content, $from_email, $from_name, $hostinger_config) {
+    // Check if PHPMailer is available (you may need to install it)
+    if (class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+        return sendWithPHPMailer($to_email, $subject, $html_content, $from_email, $from_name, $hostinger_config);
+    } else {
+        // Fallback to basic mail() function with proper headers
+        return sendWithBasicMail($to_email, $subject, $html_content, $from_email, $from_name);
+    }
+}
+
+// Function to send email using PHPMailer (recommended)
+function sendWithPHPMailer($to_email, $subject, $html_content, $from_email, $from_name, $hostinger_config) {
+    try {
+        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+        
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host = $hostinger_config['smtp_host'];
+        $mail->SMTPAuth = true;
+        $mail->Username = $hostinger_config['smtp_username'];
+        $mail->Password = $hostinger_config['smtp_password'];
+        $mail->SMTPSecure = $hostinger_config['smtp_secure'];
+        $mail->Port = $hostinger_config['smtp_port'];
+        
+        // Recipients
+        $mail->setFrom($from_email, $from_name);
+        $mail->addAddress($to_email);
+        $mail->addReplyTo($from_email, $from_name);
+        
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $html_content;
+        $mail->AltBody = strip_tags(str_replace(['<br>', '</p>'], ["\n", "\n\n"], $html_content));
+        
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        error_log("PHPMailer Error: " . $e->getMessage());
+        return false;
+    }
+}
+
+// Function to send email using basic mail() function
+function sendWithBasicMail($to_email, $subject, $html_content, $from_email, $from_name) {
+    // Set up email headers for better deliverability
+    $headers = array();
+    $headers[] = "MIME-Version: 1.0";
+    $headers[] = "Content-Type: text/html; charset=UTF-8";
+    $headers[] = "From: $from_name <$from_email>";
+    $headers[] = "Reply-To: $from_name <$from_email>";
+    $headers[] = "X-Mailer: PHP/" . phpversion();
+    $headers[] = "X-Priority: 1";
+    $headers[] = "X-MSMail-Priority: High";
+    
+    return mail($to_email, $subject, $html_content, implode("\r\n", $headers));
+}
 
 // Try to send email
-$mail_sent = mail($to_email, $subject, $html_content, implode("\r\n", $headers));
+$mail_sent = sendEmailWithHostinger($to_email, $subject, $html_content, $from_email, $from_name, $hostinger_config);
 
 if ($mail_sent) {
     // Log successful submission
     logSubmission($name, $email, $phone, $service_type, $message, true);
     
     // Send confirmation email to customer (optional)
-    sendCustomerConfirmation($name, $email, $service_type);
+    sendCustomerConfirmation($name, $email, $service_type, $hostinger_config);
     
     echo json_encode([
         'success' => true, 
@@ -222,9 +283,9 @@ function logSubmission($name, $email, $phone, $service_type, $message, $success)
 }
 
 // Function to send confirmation email to customer
-function sendCustomerConfirmation($name, $email, $service_type) {
+function sendCustomerConfirmation($name, $email, $service_type, $hostinger_config) {
     $subject = "Thank you for contacting Solectric Solutions";
-    $from_email = 'noreply@solectricsolutions.in';
+    $from_email = 'info@solectricsolutions.in'; // Send from Hostinger email
     $from_name = 'Solectric Solutions';
     
     $html_content = "
@@ -260,12 +321,6 @@ function sendCustomerConfirmation($name, $email, $service_type) {
     </html>
     ";
     
-    $headers = array();
-    $headers[] = "MIME-Version: 1.0";
-    $headers[] = "Content-Type: text/html; charset=UTF-8";
-    $headers[] = "From: $from_name <$from_email>";
-    $headers[] = "X-Mailer: PHP/" . phpversion();
-    
-    mail($email, $subject, $html_content, implode("\r\n", $headers));
+    sendEmailWithHostinger($email, $subject, $html_content, $from_email, $from_name, $hostinger_config);
 }
 ?>

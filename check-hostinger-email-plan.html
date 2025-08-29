@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Your Hostinger Email Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid #0f9d58;
+            background: #f9f9f9;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .btn {
+            background: #0f9d58;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+        .pricing {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Check Your Hostinger Email Plan</h1>
+        <p>Let's check what email service is included in your hosting plan and activate it!</p>
+
+        <div class="highlight">
+            <h3>🔍 Step 1: Check Your Current Plan</h3>
+            <ol>
+                <li><strong>Login to Hostinger Control Panel</strong></li>
+                <li><strong>Go to "Email" section</strong></li>
+                <li><strong>Look for "Email Accounts" or "Email Hosting"</strong></li>
+                <li><strong>Check what's included in your plan</strong></li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>📋 Hostinger Email Plans</h3>
+            <div class="pricing">
+                <h4>Free Email (with hosting plans):</h4>
+                <ul>
+                    <li><strong>Single Shared Hosting:</strong> 1 email account, 1GB storage</li>
+                    <li><strong>Premium Shared Hosting:</strong> 100 email accounts, 100GB storage</li>
+                    <li><strong>Business Shared Hosting:</strong> 100 email accounts, 100GB storage</li>
+                    <li><strong>Cloud Hosting:</strong> 100 email accounts, 100GB storage</li>
+                </ul>
+                
+                <h4>Paid Email Plans (if needed):</h4>
+                <ul>
+                    <li><strong>Email Starter:</strong> $0.99/month - 1 email, 10GB storage</li>
+                    <li><strong>Email Premium:</strong> $2.99/month - 10 emails, 50GB storage</li>
+                    <li><strong>Email Business:</strong> $3.99/month - 100 emails, 100GB storage</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>✅ Step 2: Activate Email (if included)</h3>
+            <ol>
+                <li><strong>In Hostinger Control Panel:</strong>
+                    <ul>
+                        <li>Go to "Email" → "Email Accounts"</li>
+                        <li>Click "Create Email Account"</li>
+                        <li>Enter: <code>info@solectricsolutions.in</code></li>
+                        <li>Set a strong password</li>
+                        <li>Click "Create"</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>🔧 Step 3: Email Configuration</h3>
+            <p><strong>IMAP/SMTP Settings for email clients:</strong></p>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace;">
+                <strong>IMAP Server:</strong> imap.hostinger.com<br>
+                <strong>IMAP Port:</strong> 993 (SSL)<br>
+                <strong>SMTP Server:</strong> smtp.hostinger.com<br>
+                <strong>SMTP Port:</strong> 587 (TLS)<br>
+                <strong>Username:</strong> info@solectricsolutions.in<br>
+                <strong>Password:</strong> Your email password
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>🌐 Step 4: Update Your Website</h3>
+            <p><strong>Update these files to use your new email:</strong></p>
+            
+            <h4>In `contact-handler.php` (line 83):</h4>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace;">
+                $to_email = 'info@solectricsolutions.in';<br>
+                $from_email = 'info@solectricsolutions.in';
+            </div>
+            
+            <h4>In `index.html` (lines 870, 955):</h4>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace;">
+                &lt;p&gt;&lt;a href="mailto:info@solectricsolutions.in"&gt;info@solectricsolutions.in&lt;/a&gt;&lt;/p&gt;
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h3>🎯 What to Do Now</h3>
+            <ol>
+                <li><strong>Check your hosting plan</strong> - most include free email</li>
+                <li><strong>Create email account</strong> if available</li>
+                <li><strong>Update website</strong> to use new email</li>
+                <li><strong>Test contact form</strong> functionality</li>
+                <li><strong>Configure email client</strong> (optional)</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>💡 Alternative: Email Forwarding (Free)</h3>
+            <p>If you prefer to keep using Gmail:</p>
+            <ol>
+                <li><strong>In Hostinger Control Panel:</strong>
+                    <ul>
+                        <li>Go to "Email" → "Email Forwarding"</li>
+                        <li>Create forward: <code>info@solectricsolutions.in</code> → <code>solectricbengaluru@gmail.com</code></li>
+                    </ul>
+                </li>
+                <li><strong>In Gmail Settings:</strong>
+                    <ul>
+                        <li>Go to "Accounts and Import"</li>
+                        <li>Add "Send mail as": <code>info@solectricsolutions.in</code></li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>This way you get professional domain email but use Gmail interface!</strong></p>
+        </div>
+
+        <div class="highlight">
+            <h3>📞 Need Help?</h3>
+            <p>If you need assistance:</p>
+            <ul>
+                <li><strong>Contact Hostinger Support</strong> - They can help activate email</li>
+                <li><strong>Check your hosting plan details</strong> - See what's included</li>
+                <li><strong>Use email forwarding</strong> - Free alternative to paid plans</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://hpanel.hostinger.com" target="_blank" class="btn">Go to Hostinger Control Panel</a>
+        </div>
+    </div>
+</body>
+</html>

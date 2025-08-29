@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Fix - Formspree Setup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid #0f9d58;
+            background: #f9f9f9;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .btn {
+            background: #0f9d58;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 Quick Fix: Your PHP Email System Failed</h1>
+        <p>I can see from your website that the contact form is failing. Let's fix this with Formspree (completely free)!</p>
+
+        <div class="highlight">
+            <h3>❌ Problem Detected</h3>
+            <p>Your PHP email system is not working on Hostinger. Error: "Failed to send message"</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 1: Sign up for Formspree (Free)</h3>
+            <ol>
+                <li>Go to <a href="https://formspree.io" target="_blank" class="btn">formspree.io</a></li>
+                <li>Click "Get Started"</li>
+                <li>Sign up with your Gmail account</li>
+                <li>Create a new form</li>
+                <li>Copy your form endpoint (looks like: <code>https://formspree.io/f/xayzabcd</code>)</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Update Your Contact Form</h3>
+            <p>Replace your current form in <code>index.html</code> with this code:</p>
+            <div class="code">
+&lt;form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm" class="contact-form"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="text" name="user_name" placeholder="Your Full Name" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="email" name="user_email" placeholder="Your Email Address" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="tel" name="user_phone" placeholder="Your Phone Number" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;select name="service_type" required&gt;
+            &lt;option value=""&gt;Select Service&lt;/option&gt;
+            &lt;option value="residential"&gt;Residential Installation&lt;/option&gt;
+            &lt;option value="commercial"&gt;Commercial Installation&lt;/option&gt;
+            &lt;option value="maintenance"&gt;Maintenance &amp; Repair&lt;/option&gt;
+            &lt;option value="consultation"&gt;Consultation&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;textarea name="message" placeholder="Tell us about your project..." required&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;
+        &lt;i class="fas fa-paper-plane"&gt;&lt;/i&gt;
+        Send Message
+    &lt;/button&gt;
+&lt;/form&gt;
+            </div>
+            <p><strong>Important:</strong> Replace <code>YOUR_FORM_ID</code> with your actual Formspree form ID!</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Remove JavaScript Email Code</h3>
+            <p>In your <code>script.js</code> file, find the contact form section and comment out or remove the PHP email code:</p>
+            <div class="code">
+// Comment out or remove this section in script.js
+/*
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // ... PHP email code ...
+});
+*/
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Test Your Form</h3>
+            <ol>
+                <li>Upload the updated files to your server</li>
+                <li>Visit your website</li>
+                <li>Fill out the contact form</li>
+                <li>Submit and check your Gmail inbox</li>
+                <li>You should receive the email at <code>solectricbengaluru@gmail.com</code></li>
+            </ol>
+        </div>
+
+        <div class="highlight">
+            <h3>✅ Benefits of Formspree</h3>
+            <ul>
+                <li><strong>Completely Free</strong> - No charges</li>
+                <li><strong>Easy Setup</strong> - No server configuration needed</li>
+                <li><strong>Spam Protection</strong> - Built-in protection</li>
+                <li><strong>Email Notifications</strong> - Instant delivery</li>
+                <li><strong>Form Analytics</strong> - Track submissions</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🔧 Alternative: Fix PHP Email System</h3>
+            <p>If you want to keep using PHP, contact Hostinger support to:</p>
+            <ul>
+                <li>Enable PHP mail() function</li>
+                <li>Configure SMTP settings</li>
+                <li>Check server mail configuration</li>
+            </ul>
+            <p><strong>But Formspree is easier and works immediately!</strong></p>
+        </div>
+
+        <div class="highlight">
+            <h3>📞 Need Help?</h3>
+            <p>If you need assistance setting up Formspree:</p>
+            <ol>
+                <li>Follow the steps above</li>
+                <li>Use the test form to verify it works</li>
+                <li>All emails will go to <code>solectricbengaluru@gmail.com</code></li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

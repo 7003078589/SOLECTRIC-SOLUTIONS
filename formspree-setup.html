@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Email Solution - Formspree</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .step {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid #0f9d58;
+            background: #f9f9f9;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🆓 Free Email Solution for Your Contact Form</h1>
+        <p>Since Hostinger email is paid, here's a <strong>completely free</strong> alternative using Formspree:</p>
+
+        <div class="step">
+            <h3>Step 1: Sign up for Formspree (Free)</h3>
+            <ol>
+                <li>Go to <a href="https://formspree.io" target="_blank">formspree.io</a></li>
+                <li>Sign up with your Gmail account</li>
+                <li>Create a new form</li>
+                <li>Copy your form endpoint (looks like: <code>https://formspree.io/f/xayzabcd</code>)</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Update Your Contact Form</h3>
+            <p>Replace your current form with this code:</p>
+            <div class="code">
+&lt;form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm" class="contact-form"&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="text" name="user_name" placeholder="Your Full Name" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="email" name="user_email" placeholder="Your Email Address" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;input type="tel" name="user_phone" placeholder="Your Phone Number" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;select name="service_type" required&gt;
+            &lt;option value=""&gt;Select Service&lt;/option&gt;
+            &lt;option value="residential"&gt;Residential Installation&lt;/option&gt;
+            &lt;option value="commercial"&gt;Commercial Installation&lt;/option&gt;
+            &lt;option value="maintenance"&gt;Maintenance &amp; Repair&lt;/option&gt;
+            &lt;option value="consultation"&gt;Consultation&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;textarea name="message" placeholder="Tell us about your project..." required&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;
+        &lt;i class="fas fa-paper-plane"&gt;&lt;/i&gt;
+        Send Message
+    &lt;/button&gt;
+&lt;/form&gt;
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Remove PHP Files</h3>
+            <p>You can now delete these files since Formspree handles everything:</p>
+            <ul>
+                <li><code>contact-handler.php</code> (delete this)</li>
+                <li><code>test-php-backend.html</code> (delete this)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Update JavaScript</h3>
+            <p>Replace your current form handling in <code>script.js</code> with this simple code:</p>
+            <div class="code">
+// Simple form handling for Formspree
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Formspree handles the submission automatically
+        formStatus.textContent = 'Sending message...';
+        formStatus.style.color = '#0f9d58';
+    });
+}
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h3>✅ Benefits of Formspree (Free):</h3>
+            <ul>
+                <li><strong>100% Free</strong> for up to 50 submissions per month</li>
+                <li><strong>No server setup</strong> required</li>
+                <li><strong>Spam protection</strong> included</li>
+                <li><strong>Email notifications</strong> to your Gmail</li>
+                <li><strong>Works on any hosting</strong> (Hostinger, Netlify, etc.)</li>
+                <li><strong>No PHP required</strong></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Step 5: Test Your Form</h3>
+            <p>After setting up Formspree:</p>
+            <ol>
+                <li>Upload your updated files to Hostinger</li>
+                <li>Fill out the contact form on your website</li>
+                <li>Check your Gmail for the inquiry</li>
+                <li>Formspree will also send a confirmation to the customer</li>
+            </ol>
+        </div>
+
+        <div class="highlight">
+            <h3>🎯 Result:</h3>
+            <p>You'll receive all contact form submissions at <strong>solectricbengaluru@gmail.com</strong> completely free, without needing to pay for Hostinger email hosting!</p>
+        </div>
+    </div>
+</body>
+</html>
